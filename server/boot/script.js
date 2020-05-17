@@ -1,14 +1,11 @@
-module.exports = function(app) {
-
+module.exports = function(app){
     var Customer = app.models.Customer;
-
     Customer.findOne({ username: 'Admin' }, (err, users) => {
-
         if (!users) {
             Customer.create([
                 {username: 'Admin', email: 'admin@confusion.net', password: 'password'}
             ], (err, users) => {
-                if (err) throw (err);
+                if (err) throw(err);
                 
                 var Role = app.models.Role;
                 var RoleMapping = app.models.RoleMapping;
